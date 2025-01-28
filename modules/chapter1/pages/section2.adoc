@@ -2,8 +2,10 @@
 
 == Follow below steps in the lab to check your work
 
-FIXME: Add the instructions to be followed in the lab environment to make sure the problem has been resolved. You may chose to remove this block if grading script is provided in the lab to check the work.
-
+- tftp is enabled on satellite.
+- tftp is using the mentioned tftp directories
+- satellite-installer has completed successfully with the above in place.
+ 
 == Check your work using the grading script
 
 After you have resolved the issue and met the success criteria, login to `FIXME` system as `FIXME` user and run the grading script as shown here to check your work:

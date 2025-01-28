@@ -1,12 +1,13 @@
-= An Example Break-fix course
+= Configuring tftp on Red Hat Satellite 6
 :navtitle: Home
 
 == Introduction
 
-TITLE1: Red Hat Enterprise Linux 9 (FIXME product)
+- Red Hat Satellite 6
 
-TITLE2: Break-fix Practice 1 (FIXME title)
+*Break-fix:* Configuring tftp on Red Hat Satellite 6
 
-Description:
-This break-fix training simulates a problem FIXME . You'll investigate and solve the problem in a hands-on lab environment to complete the training.
+*Description:*
+This break-fix training simulates a problem while configuring tftp on satellite . You'll investigate and solve the problem in a hands-on lab environment to complete the training.
 
+NOTE: After ordering the lab run the lab preparation instruction only *ONCE* .

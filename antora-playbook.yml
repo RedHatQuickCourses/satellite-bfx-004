@@ -1,5 +1,5 @@
 site:
-  title: Red Hat Satellite Break-fix Practice 4 (FIXME)
+  title: Break-fix Practice Configuring tftp on Red Hat Satellite 6
   start_page: satellite-bfx-004::index.adoc
 
 content:

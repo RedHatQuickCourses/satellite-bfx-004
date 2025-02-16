@@ -1,3 +1,0 @@
-= Guided solution (page 2 of 2)
-
-Once the tftp_dirs paramerter is defined correctly, the satellite-installer should complete successfully.

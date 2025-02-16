@@ -3,8 +3,8 @@
 
 == Objectives
 
-* Investigate what is the issue tftp in satellite.
-* Solve the directory issue of tftp and allowing satellite-installer to complete successfully in the hands-on lab environment.
+* Investigate the issue with satellite-installer command in satellite.
+* Solve the directory issue of tftp and hence allowing satellite-installer to complete successfully in the hands-on lab environment.
 
 == Instructions
 
@@ -51,7 +51,11 @@ The command should complete successfully:
 
 .Sample output:
 ----
+...
+...
 2025-02-11 07:59:28 [NOTICE] [configure] System configuration has finished.
   Success!
   * Satellite is running at https://satellite.xxx.yyy
+...
+...
 ----

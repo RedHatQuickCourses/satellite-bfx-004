@@ -3,11 +3,13 @@
 
 == Introduction
 
+=== Red Hat Products
 - Red Hat Satellite 6
 
-*Break-fix:* Configuring tftp on Red Hat Satellite 6
+=== Break-fix Practice: Configuring tftp on Red Hat Satellite 6
 
 *Description:*
-This break-fix training simulates a problem while configuring tftp on satellite . You'll investigate and solve the problem in a hands-on lab environment to complete the training.
+This break-fix training simulates a problem while configuring tftp on satellite.
+You'll investigate and solve the problem in a hands-on lab environment to complete the training.
 
-NOTE: After ordering the lab run the lab preparation instruction only *ONCE* .
+NOTE: After ordering the lab run the lab preparation instruction only *ONCE*.

@@ -1,9 +1,9 @@
-= Guided solution (page 1 of 1)
+= Guided Solution
 :experimental:
 
 == Objectives
 
-* Investigate the issue with satellite-installer command in satellite.
+* Investigate the issue with `satellite-installer` command in satellite.
 * Solve the directory issue of tftp and hence allowing satellite-installer to complete successfully in the hands-on lab environment.
 
 == Instructions
@@ -16,39 +16,55 @@ Run following instructions on `satellite` system with `root` as user.
 [root@satellite ~]#
 ----
 
-* ISSUE: `/var/log/foreman-installer/satellite.log` shows:
+. Notice the configure error in `/var/log/foreman-installer/satellite.log` file.
 +
 .Sample output:
 ----
-[ ERROR ] [configure] Cannot create /var/lib/tftpboot/pxelinux.cfg,/var/lib/tftpboot/grub,/var/lib/tftpboot/grub2,/var/lib/tftpboot/boot,/var/lib/tftpboot/ztp.cfg,/var/lib/tftpboot/poap.cfg; parent directory /var/lib/tftpboot/pxelinux.cfg,/var/lib/tftpboot/grub,/var/lib/tftpboot/grub2,/var/lib/tftpboot/boot,/var/lib/tftpboot/ztp.cfg,/var/lib/tftpboot does not exist
+[root@satellite ~]# cat /var/log/foreman-installer/satellite.log | grep ERROR
+2025-02-19 18:00:18 [NOTICE] [root] Use -l to set the terminal output log level to ERROR, WARN, NOTICE, INFO, or DEBUG. See --full-help for definitions.
+2025-02-19 18:00:30 [ERROR ] [configure] Cannot create /var/lib/tftpboot/pxelinux.cfg,/var/lib/tftpboot/grub,/var/lib/tftpboot/grub2,/var/lib/tftpboot/boot,/var/lib/tftpboot/ztp.cfg,/var/lib/tftpboot/poap.cfg; parent directory /var/lib/tftpboot/pxelinux.cfg,/var/lib/tftpboot/grub,/var/lib/tftpboot/grub2,/var/lib/tftpboot/boot,/var/lib/tftpboot/ztp.cfg,/var/lib/tftpboot does not exist
+2025-02-19 18:00:30 [ERROR ] [configure] /Stage[main]/Foreman_proxy::Tftp/File[/var/lib/tftpboot/pxelinux.cfg,/var/lib/tftpboot/grub,/var/lib/tftpboot/grub2,/var/lib/tftpboot/boot,/var/lib/tftpboot/ztp.cfg,/var/lib/tftpboot/poap.cfg]/ensure: change from 'absent' to 'directory' failed: Cannot create /var/lib/tftpboot/pxelinux.cfg,/var/lib/tftpboot/grub,/var/lib/tftpboot/grub2,/var/lib/tftpboot/boot,/var/lib/tftpboot/ztp.cfg,/var/lib/tftpboot/poap.cfg; parent directory /var/lib/tftpboot/pxelinux.cfg,/var/lib/tftpboot/grub,/var/lib/tftpboot/grub2,/var/lib/tftpboot/boot,/var/lib/tftpboot/ztp.cfg,/var/lib/tftpboot does not exist
 ----
 
+. The error indicates some issue with the tftp directories.
 
-The error indicates some issue with the tftp directories. If we inspect the `/etc/foreman-installer/scenarios.d/satellite-answers.yaml` file we can see that the tftp_dirs paramerter is defined in an incorrect way. +
-The correct way to define an array in yaml would be: +
+.. If you inspect the `/etc/foreman-installer/scenarios.d/satellite-answers.yaml` file, you can see that the `tftp_dirs` parameter is defined in an incorrect way.
++
+.Sample output:
 ----
-tftp_dirs: 
-- "/var/lib/tftpboot/pxelinux.cfg" 
-- "/var/lib/tftpboot/grub" 
-- "/var/lib/tftpboot/grub2" 
-- "/var/lib/tftpboot/boot" 
-- "/var/lib/tftpboot/ztp.cfg" 
+[root@satellite ~]# cat /etc/foreman-installer/scenarios.d/satellite-answers.yaml | grep -i tftp_dirs -A 2
+  tftp_dirs:
+  - "/var/lib/tftpboot/pxelinux.cfg,/var/lib/tftpboot/grub,/var/lib/tftpboot/grub2,/var/lib/tftpboot/boot,/var/lib/tftpboot/ztp.cfg,/var/lib/tftpboot/poap.cfg"
+  tftp_servername: satellite.58zfw.sandbox447.opentlc.com
+----
+
+.. The correct way to define an array in yaml is as follows:
++
+----
+tftp_dirs:
+- "/var/lib/tftpboot/pxelinux.cfg"
+- "/var/lib/tftpboot/grub"
+- "/var/lib/tftpboot/grub2"
+- "/var/lib/tftpboot/boot"
+- "/var/lib/tftpboot/ztp.cfg"
 - "/var/lib/tftpboot/poap.cfg"
 ----
-As an alternative, this can also be defined via satellite-installer as:
+
+. As an alternative, this can also be defined via `satellite-installer` command.
++
 [source,bash,role=execute]
 ----
-satellite-installer \ 
---foreman-proxy-tftp-dirs  /var/lib/tftpboot/pxelinux.cfg \ 
---foreman-proxy-tftp-dirs /var/lib/tftpboot/grub \ 
---foreman-proxy-tftp-dirs /var/lib/tftpboot/grub2 \ 
---foreman-proxy-tftp-dirs /var/lib/tftpboot/boot \ 
---foreman-proxy-tftp-dirs /var/lib/tftpboot/ztp.cfg \ 
+satellite-installer \
+--foreman-proxy-tftp-dirs  /var/lib/tftpboot/pxelinux.cfg \
+--foreman-proxy-tftp-dirs /var/lib/tftpboot/grub \
+--foreman-proxy-tftp-dirs /var/lib/tftpboot/grub2 \
+--foreman-proxy-tftp-dirs /var/lib/tftpboot/boot \
+--foreman-proxy-tftp-dirs /var/lib/tftpboot/ztp.cfg \
 --foreman-proxy-tftp-dirs /var/lib/tftpboot/poap.cfg
 ----
 
-The command should complete successfully:
-
+. The command should complete successfully.
++
 .Sample output:
 ----
 ...

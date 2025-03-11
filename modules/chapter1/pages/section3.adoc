@@ -1,6 +1,6 @@
 = Check your work
 
-== Follow below steps in the lab to check your work
+== Follow the below steps in the lab to check your work.
 
 - tftp is enabled on satellite.
 - tftp is using the mentioned tftp directories
@@ -8,7 +8,7 @@
 
 == Check your work using the grading script
 
-After you have resolved the issue and met the success criteria, login to `bastion` system as `lab-user` user and run the grading script as shown here to check your work:
+After you have resolved the issue and met the success criteria, login to the `bastion` system as `lab-user` user and run the grading script as shown here to check your work:
 
 [source,bash,role=execute]
 ----

@@ -1,9 +1,9 @@
 = Break-fix Scenario
 
 Configuring TFTP to use some specific directories on the satellite fails.
-Your job is to investigate the issue and ensure satellite server is running.
+Your job is to investigate the issue and ensure that the satellite server is running.
 
-Here is error the message:
+Here is the error message:
 
 .Sample output
 ----
@@ -15,12 +15,12 @@ Here is error the message:
 
 == Objectives
 
-* Investigate the issue with `satellite-installer` command in satellite.
+* Investigate the issue with the  `satellite-installer` command in satellite.
 * Solve the directory issue of tftp and hence allowing satellite-installer to complete successfully in the hands-on lab environment.
 
 == Recreate Scenario
 
-To recreate this scenario, run the `lab` script on `bastion` server.
+To recreate this scenario, run the `lab` script on the `bastion` server.
 
 [source,bash,role=execute]
 ----

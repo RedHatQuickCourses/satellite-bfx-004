@@ -3,12 +3,12 @@
 
 == Objectives
 
-* Investigate the issue with `satellite-installer` command in satellite.
+* Investigate the issue with the `satellite-installer` command in satellite.
 * Solve the directory issue of tftp and hence allowing satellite-installer to complete successfully in the hands-on lab environment.
 
 == Instructions
 
-Run following instructions on `satellite` system with `root` as user.
+Run the following instructions on the `satellite` system with `root` as user.
 
 .Sample output:
 ----
@@ -63,7 +63,7 @@ satellite-installer \
 --foreman-proxy-tftp-dirs /var/lib/tftpboot/poap.cfg
 ----
 
-. The command should complete successfully.
+. The command should be completed successfully.
 +
 .Sample output:
 ----
